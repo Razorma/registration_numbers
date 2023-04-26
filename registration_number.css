@@ -15,6 +15,17 @@
 }
 label{
     display: block;
+    /* margin: 0.5rem 0; */
+    color: aliceblue;
+}
+label p{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    color: #669BBC;
+    font-size: 20px;
+    font-weight: 1000;
 }
 .main{
     display: flex;
@@ -35,6 +46,12 @@ h2{
 input{
     margin-bottom: 20px;
     min-height: 30px;
+}
+select{
+    display: block;
+    margin-bottom: 10px;
+    min-height: 30px;
+    width: 170px;
 }
 .addButton{
     margin-bottom: 25px;

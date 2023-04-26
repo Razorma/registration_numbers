@@ -1,0 +1,49 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.numberPlate{
+    height: 100%;
+    border: 1px solid black;
+    width: fit-content;
+    height: fit-content;
+    /* padding: auto;
+    margin: auto; */
+    background-color: rgb(192, 192, 192);
+    border-radius: 5px;
+}
+label{
+    display: block;
+}
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #003049;
+    height: 100vh;
+}
+h1{
+    margin-bottom: 30px;
+    color: #669BBC;
+}
+h2{
+    margin-bottom: 10px;
+    color: #669BBC;
+}
+input{
+    margin-bottom: 20px;
+    min-height: 30px;
+}
+.addButton{
+    margin-bottom: 25px;
+    background-color: #03071e;
+    color: azure;
+    justify-content: center;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    min-width:85px;
+    height: 30px;
+}

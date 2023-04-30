@@ -16,30 +16,47 @@
             name="Reg"
             value=""
             placeholder="  Enter registration number"
-            class="name-area"
+            class="town-area"
           />
           <button 
-          class="addButton" 
+          class="addButton button" 
           type="button" 
           name="button"
           >Add
           </button>
+          <button 
+          class="clearButton button" 
+          type="button" 
+          name="button"
+          >Clear
+          </button>
           <label for="town"><p>Town:</p>
-            <select id="town" name="town">
+            <select id="town" name="town" class="select">
               <option value="">Select Town</option>
-              <option value="paarl">paarl</option>
-              <option value="Bellville">Bellville</option>
-              <option value="Stellenbosch">Stellenbosch</option>
-              <option value="Malmesbury">Malmesbury</option>
-              <option value="CapeTown">CapeTown</option>
-              <option value="Kuilsriver">Kuilsriver</option>
+              <option value="CJ">paarl</option>
+              <option value="CY">Bellville</option>
+              <option value="CL">Stellenbosch</option>
+              <option value="CK">Malmesbury</option>
+              <option value="CA">CapeTown</option>
+              <option value="CF">Kuilsriver</option>
             </select>
         </label>
-        <div class="numberPlate">CA 45679</div>
+        <button 
+          class="showButton button" 
+          type="button" 
+          name="button"
+          >Show
+          </button>
+        <!-- <div class="numberPlate">CA 45679</div> -->
+        <div class="numberPlate">
+          <ul class="numberPlateList">
+          </ul>
+        </div>
         
         
     </div>
     
 </body>
 <script src="registration_number.js" charset="utf-8"></script>
+<script src="registration-number.js" charset="utf-8"></script>
 </html>

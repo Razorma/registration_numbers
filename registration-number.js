@@ -5,8 +5,9 @@ const enteredTown = document.querySelector(".town-area");
 const selectElement = document.querySelector(".select");
 const numberPlate = document.querySelector(".numberPlate");
 const numberPlateList = document.querySelector(".numberPlateList");
+const messageInput = document.querySelector(".messageInput");
 
-const registrationList = document.createElement("li")
+
 
 
 const enteredTownInput = document.querySelector('input[type="text"]');
@@ -17,25 +18,25 @@ const registrationNumbers = displayRegNumbers()
 
 
 regNumbers = JSON.parse(localStorage.getItem('regNumber')) || {};
-console.log(JSON.parse(localStorage.getItem('regNumber')))
+
 
 addButton.addEventListener("click", function(){
-    // numberPlate.innerHTML = enteredTown.value
-    // registrationList.textContent = enteredTown.value
-    // numberPlateList.appendChild(registrationList);
     registrationNumbers.setRegNumber(enteredTown.value)
-    //go use the storage to keep the array and object
-    
+    const letterRegex = /^C[FKLAYJ]\s\d*$/;
+    if(enteredTown.value != ''){
+  if (!letterRegex.test(enteredTown.value)) {
+      alert("enter only registrations from Paarl, Bellville, Stellenbosch, Malmesbury, Cape-Town, and Kuilsriver")
+  }
     localStorage.setItem('regNumber', JSON.stringify(registrationNumbers.getRegNumbers()));
-    
-    //   console.log(registrationNumbers.getRegNumbers())
-    //   console.log(JSON.stringify(registrationNumbers.getRegNumbers()))
-      registrationNumbers.setTown(selectElement.value)
-    //   console.log(registrationNumbers.getTown())
-   
-    // numberPlate.innerHTML = localStorage.getItem("regNumber")
-    // console.log(registrationNumbers.getRegNumbers())
+    registrationNumbers.setTown(selectElement.value)
     enteredTown.value = '';
+  }else{
+    messageInput.innerHTML = "enter registration number"
+    messageInput.classList.add("warning");
+    setTimeout(function() {
+      messageInput.innerHTML = ""
+    }, 2000);
+  }
 })
 clearButton.addEventListener('click', function () {
     localStorage.clear();
@@ -45,36 +46,25 @@ clearButton.addEventListener('click', function () {
 });
 
 showButton.addEventListener("click", function(){
-    //numberPlate.innerHTML = enteredTown.value
-    // registrationList.textContent = enteredTown.value
-    // numberPlateList.appendChild(registrationList);
-    // console.log(selectElement.value)
-    // registrationNumbers.setTown()
-    //  console.log(selectElement.value)
+  console.log(selectElement.value)
+  if(selectElement.value === ''){
+    const listItem = document.createElement('h4');
+    listItem.textContent = "Please specify town";
+    listItem.classList.add("warning");
+    numberPlate.appendChild(listItem);
+
+    setTimeout(function() {
+      listItem.remove();
+    }, 2000);
+  }else{
     numberPlateList.innerHTML = "";
-     registrationNumbers.setTown(selectElement.value)
-     
-    //  for(var i=0;i<registrationNumbers.getTown().length;i++){
-    //     registrationList.textContent = registrationNumbers.getTown()[i]
-    //    console.log(registrationNumbers.getTown()[i])
-    //    numberPlate.innerHTML = registrationNumbers.getTown()[i]
-    //    numberPlateList.appendChild(registrationList)[i];
-    // }
-    // registrationNumbers.getTown().forEach(registration => {
-        
-    //     registrationList.textContent = registration;
-    //     numberPlateList.appendChild(numberPlateList);
-    //   });
-   
+    registrationNumbers.setTown(selectElement.value)
       for (let i = 0; i < registrationNumbers.getTown().length; i++) {
         const listItem = document.createElement('li');
         listItem.textContent = registrationNumbers.getTown()[i];
         numberPlateList.appendChild(listItem);
       }
-     //right now i need to go learn about appeding and adding other html documents
-     
-     
-
+    } 
 })
 
-// .toString()
+

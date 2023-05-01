@@ -11,13 +11,19 @@ var registrationCounter = 0;
 let bb = []
 
 function displayRegNumbers(){
+    let message = ""
+    const allowed = /^C[FKLAYJ]\s\d*$/;
     function setRegNumber(reg){
+        if(allowed.test(reg)){
       if(regNumbers[reg] === undefined){
           registrationCounter++
           regNumbers[reg] = reg
       }else{
           regNumbers[reg] = reg
       }
+    }else{
+        message = "enter only registrations from Paarl, Bellville, Stellenbosch, Malmesbury, Cape-Town, and Kuilsriver"
+    }
     }
     
       function getRegNumbers(){
@@ -40,72 +46,16 @@ function displayRegNumbers(){
     function getTown(){
         return townChosen
     }
+    function getError(){
+        return message
+    }
     return{
         setRegNumber,
         getRegNumbers,
         setTown,
         regNumberCounter,
         getTown,
+        getError,
     }
 }
 
-// const reg = displayRegNumbers();
-// // reg.setRegNumber("CL 11318")
-// reg.setRegNumber("CG 11318")
-// reg.setRegNumber("CL 11318")
-// reg.setRegNumber("CC 11318")
-// reg.setRegNumber("CL 11318")
-// console.log(reg.getRegNumbers())
-
-
-// function setTown(){
-    //     for(let reg in regNumbers){
-    //       if(regNumbers[reg].startsWith('CJ') ){
-    //           paarl.push(regNumbers[reg])
-    //       }else if(regNumbers[reg].startsWith('CY') ){
-    //           Bellville.push(regNumbers[reg])
-    //       }else if(regNumbers[reg].startsWith('CL') ){
-    //           Stellenbosch.push(regNumbers[reg])
-    //       }else if(regNumbers[reg].startsWith('CK') ){
-    //           Malmesbury.push(regNumbers[reg])
-    //       }else if(regNumbers[reg].startsWith('CA') ){
-    //           CapeTown.push(regNumbers[reg])
-    //       }else if(regNumbers[reg].startsWith('CF') ){
-    //           Kuilsriver.push(regNumbers[reg])
-    //       }
-    //      }
-    //      return{
-    //          paarl,
-    //          Bellville,
-    //          Stellenbosch,
-    //          Malmesbury,
-    //          CapeTown,
-    //          Kuilsriver,
-    //      }
-    //     }
-    // function setTown(){
-    //     for(let reg in regNumbers){
-    //       if(regNumbers[reg].startsWith('CJ') ){
-    //           paarl.push(regNumbers[reg])
-    //       }else if(regNumbers[reg].startsWith('CY') ){
-    //           Bellville.push(regNumbers[reg])
-    //       }else if(regNumbers[reg].startsWith('CL') ){
-    //           Stellenbosch.push(regNumbers[reg])
-    //       }else if(regNumbers[reg].startsWith('CK') ){
-    //           Malmesbury.push(regNumbers[reg])
-    //       }else if(regNumbers[reg].startsWith('CA') ){
-    //           CapeTown.push(regNumbers[reg])
-    //       }else if(regNumbers[reg].startsWith('CF') ){
-    //           Kuilsriver.push(regNumbers[reg])
-    //       }
-    //      }
-    //      return{
-    //          paarl,
-    //          Bellville,
-    //          Stellenbosch,
-    //          Malmesbury,
-    //          CapeTown,
-    //          Kuilsriver,
-    //      }
-       
-    // }

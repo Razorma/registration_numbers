@@ -20,51 +20,71 @@ const registrationNumbers = displayRegNumbers()
 regNumbers = JSON.parse(localStorage.getItem('regNumber')) || {};
 
 
-addButton.addEventListener("click", function(){
-    registrationNumbers.setRegNumber(enteredTown.value)
-    const letterRegex = /^C[FKLAYJ]\s\d*$/;
-    if(enteredTown.value != ''){
-  if (!letterRegex.test(enteredTown.value)) {
+addButton.addEventListener("click", function () {
+  registrationNumbers.setRegNumber(enteredTown.value)
+  const letterRegex = /^C[FKLAYJ]\s\d*$/;
+  if (enteredTown.value.toUpperCase() != '') {
+    if (!letterRegex.test(enteredTown.value.toUpperCase())) {
       alert("enter only registrations from Paarl, Bellville, Stellenbosch, Malmesbury, Cape-Town, and Kuilsriver")
-  }
+    }
     localStorage.setItem('regNumber', JSON.stringify(registrationNumbers.getRegNumbers()));
     registrationNumbers.setTown(selectElement.value)
     enteredTown.value = '';
-  }else{
+  } else {
     messageInput.innerHTML = "enter registration number"
     messageInput.classList.add("warning");
-    setTimeout(function() {
+    setTimeout(function () {
       messageInput.innerHTML = ""
     }, 2000);
   }
 })
 clearButton.addEventListener('click', function () {
-    localStorage.clear();
-    numberPlateList.textContent = "";
-    regNumbers = {};
-    enteredTown.value = '';
+  localStorage.clear();
+  numberPlateList.textContent = "";
+  regNumbers = {};
+  enteredTown.value = '';
+  alert("you have cleared all the  registration numbers from the storage")
 });
 
-showButton.addEventListener("click", function(){
-  console.log(selectElement.value)
-  if(selectElement.value === ''){
+
+
+
+
+showButton.addEventListener("click", function () {
+  if (selectElement.value === '') {
     const listItem = document.createElement('h4');
     listItem.textContent = "Please specify town";
     listItem.classList.add("warning");
     numberPlate.appendChild(listItem);
 
-    setTimeout(function() {
+    setTimeout(function () {
       listItem.remove();
     }, 2000);
-  }else{
+  } else {
+    
     numberPlateList.innerHTML = "";
     registrationNumbers.setTown(selectElement.value)
-      for (let i = 0; i < registrationNumbers.getTown().length; i++) {
-        const listItem = document.createElement('li');
-        listItem.textContent = registrationNumbers.getTown()[i];
-        numberPlateList.appendChild(listItem);
-      }
-    } 
+    const selectedOption = selectElement.options[selectElement.selectedIndex];
+    const theselectedOption = selectedOption.dataset.name;
+    
+   
+    if(registrationNumbers.getTown() == ''){
+      const listItem = document.createElement('h4');
+      listItem.textContent = `Please add registration numbers from ${theselectedOption}`;
+      listItem.classList.add("warning");
+      numberPlate.appendChild(listItem);
+  
+      setTimeout(function () {
+        listItem.remove();
+      }, 2000);
+    }else{
+    for (let i = 0; i < registrationNumbers.getTown().length; i++) {
+      const listItem = document.createElement('li');
+      listItem.textContent = registrationNumbers.getTown()[i];
+      numberPlateList.appendChild(listItem);
+    }
+  }
+  }
 })
 
 

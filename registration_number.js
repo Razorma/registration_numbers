@@ -10,46 +10,46 @@ let townChosen = []
 var registrationCounter = 0;
 let bb = []
 
-function displayRegNumbers(){
+function displayRegNumbers() {
     let message = ""
     const allowed = /^C[FKLAYJ]\s\d*$/;
-    function setRegNumber(reg){
-        if(allowed.test(reg)){
-      if(regNumbers[reg] === undefined){
-          registrationCounter++
-          regNumbers[reg] = reg
-      }else{
-          regNumbers[reg] = reg
-      }
-    }else{
-        message = "enter only registrations from Paarl, Bellville, Stellenbosch, Malmesbury, Cape-Town, and Kuilsriver"
+    function setRegNumber(reg) {
+        if (allowed.test(reg.toUpperCase())) {
+            if (regNumbers[reg] === undefined) {
+                registrationCounter++
+                regNumbers[reg] = reg.toUpperCase()
+            } else {
+                regNumbers[reg] = reg.toUpperCase()
+            }
+        } else {
+            message = "enter only registrations from Paarl, Bellville, Stellenbosch, Malmesbury, Cape-Town, and Kuilsriver"
+        }
     }
+
+    function getRegNumbers() {
+        return regNumbers
     }
-    
-      function getRegNumbers(){
-          return regNumbers
-    }
-    function regNumberCounter(){
+    function regNumberCounter() {
         return registrationCounter
     }
 
 
-    function setTown(townPrefix){
+    function setTown(townPrefix) {
         townChosen = [];
-        for(let reg in regNumbers){
-            if(regNumbers[reg].startsWith(townPrefix) ){
+        for (let reg in regNumbers) {
+            if (regNumbers[reg].startsWith(townPrefix)) {
                 townChosen.push(regNumbers[reg])
             }
         }
     }
-    
-    function getTown(){
+
+    function getTown() {
         return townChosen
     }
-    function getError(){
+    function getError() {
         return message
     }
-    return{
+    return {
         setRegNumber,
         getRegNumbers,
         setTown,

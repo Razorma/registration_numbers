@@ -9,7 +9,9 @@
 </head>
 <body>
     <div class="main">
-        <h1>Ragistrations</h1>
+      
+        <h1>Ragistration Numbers</h1>
+        <div class="registrationNumber">
         <h2>Registration number :</h2>
         <p class="messageInput"></p>
         <input
@@ -19,6 +21,8 @@
             placeholder="  Enter registration number"
             class="town-area"
           />
+        </div>
+        <div class="buttons">
           <button 
           class="addButton button" 
           type="button" 
@@ -31,15 +35,16 @@
           name="button"
           >Clear
           </button>
-          <label for="town"><p>Town:</p>
+        </div>
+          <label for="town" class="townSelect"><p>Town:</p>
             <select id="town" name="town" class="select">
               <option value="">Select Town</option>
-              <option value="CJ">paarl</option>
-              <option value="CY">Bellville</option>
-              <option value="CL">Stellenbosch</option>
-              <option value="CK">Malmesbury</option>
-              <option value="CA">CapeTown</option>
-              <option value="CF">Kuilsriver</option>
+              <option value="CJ" data-name="paarl">paarl</option>
+              <option value="CY" data-name="Bellville">Bellville</option>
+              <option value="CL" data-name="Stellenbosch">Stellenbosch</option>
+              <option value="CK" data-name="Malmesbury">Malmesbury</option>
+              <option value="CA" data-name="CapeTown">CapeTown</option>
+              <option value="CF" data-name="Kuilsriver">Kuilsriver</option>
             </select>
         </label>
         <button 
@@ -48,7 +53,7 @@
           name="button"
           >Show
           </button>
-        <!-- <div class="numberPlate">CA 45679</div> -->
+       
         <div class="numberPlate">
           <ul class="numberPlateList">
           </ul>

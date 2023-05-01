@@ -52,10 +52,12 @@ clearButton.addEventListener('click', function () {
 
 showButton.addEventListener("click", function () {
   if (selectElement.value === '') {
+    numberPlateList.textContent = "";
     const listItem = document.createElement('h4');
     listItem.textContent = "Please specify town";
     listItem.classList.add("warning");
-    numberPlate.appendChild(listItem);
+    const referenceListItem = numberPlate.children[0];
+    numberPlate.insertBefore(listItem, referenceListItem);
 
     setTimeout(function () {
       listItem.remove();

@@ -1,11 +1,11 @@
 let regNumbers = {}
 let townNumbers = []
-let paarl = []   // Paarl = ('CJ')
-let Bellville = []// Bellville ('CY')
-let Stellenbosch = []// Stellenbosch ('CL')
-let Malmesbury = []// Malmesbury ('CK')
-let CapeTown = []// Cape-Town ('CA')
-let Kuilsriver = []// Kuilsriver ('CF')
+   // Paarl = ('CJ')
+// Bellville ('CY')
+// Stellenbosch ('CL')
+// Malmesbury ('CK')
+// Cape-Town ('CA')
+// Kuilsriver ('CF')
 let townChosen = []
 var registrationCounter = 0;
 let bb = []

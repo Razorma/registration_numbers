@@ -22,7 +22,9 @@ regNumbers = JSON.parse(localStorage.getItem('regNumber')) || {};
 
 addButton.addEventListener("click", function () {
   registrationNumbers.setRegNumber(enteredTown.value)
-  const letterRegex = /^C[FKLAYJ]\s\d*$/;
+ 
+  console.log(enteredTown.value)
+  const letterRegex =/^C[FKLAYJ](\s\d+|\s\d+-\d+)*$/; 
   if (enteredTown.value.toUpperCase() != '') {
     if (!letterRegex.test(enteredTown.value.toUpperCase())) {
       alert("enter only registrations from Paarl, Bellville, Stellenbosch, Malmesbury, Cape-Town, and Kuilsriver")
@@ -30,13 +32,41 @@ addButton.addEventListener("click", function () {
     localStorage.setItem('regNumber', JSON.stringify(registrationNumbers.getRegNumbers()));
     registrationNumbers.setTown(selectElement.value)
     enteredTown.value = '';
-  } else {
+    console.log(registrationNumbers.getTown())
+     
+  } else if (enteredTown.value.toUpperCase() === ''){
     messageInput.innerHTML = "enter registration number"
     messageInput.classList.add("warning");
     setTimeout(function () {
       messageInput.innerHTML = ""
     }, 2000);
-  }
+  } 
+  
+  
+  numberPlateList.textContent = "";
+  if (selectElement.value === '') {
+    numberPlateList.textContent = "";
+    const listItem = document.createElement('h4');
+    listItem.textContent = "Please specify town";
+    listItem.classList.add("warning");
+    const referenceListItem = numberPlate.children[0];
+    numberPlate.insertBefore(listItem, referenceListItem);
+
+    setTimeout(function () {
+      listItem.remove();
+    }, 2000);
+  } else {
+ for (let i = 0; i < registrationNumbers.getAllTown().length; i++) {
+      
+      const listItem = document.createElement('li');
+      listItem.textContent = registrationNumbers.getAllTown()[i];
+      numberPlateList.appendChild(listItem);
+     }
+
+      console.log(registrationNumbers.trackReg())
+    
+    
+    }
 })
 clearButton.addEventListener('click', function () {
   localStorage.clear();

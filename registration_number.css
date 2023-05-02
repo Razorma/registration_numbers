@@ -12,8 +12,9 @@
     border-radius: 5px;
 } 
 .registrationNumber h2::after{
-    content: 'eg CA 122122';
+    content: 'eg "CA 122122","CA 122-122",  "CA 122 122"';
     display: flex;
+    color: #e76f51;
     flex-direction: column;
     align-items: flex-end;
     font-size: 12px;

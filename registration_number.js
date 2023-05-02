@@ -6,26 +6,34 @@ let townNumbers = []
 // Malmesbury ('CK')
 // Cape-Town ('CA')
 // Kuilsriver ('CF')
+
 let townChosen = []
 var registrationCounter = 0;
-let bb = []
 
+let bb = []
+var trackRegistrations = 0;
 function displayRegNumbers() {
     let message = ""
-    const allowed = /^C[FKLAYJ]\s\d*$/;
+    const allowed = /^C[FKLAYJ](\s\d+|\s\d+-\d+)*$/;
     function setRegNumber(reg) {
+        
         if (allowed.test(reg.toUpperCase())) {
-            if (regNumbers[reg] === undefined) {
+            
+            const regs = reg.replace(/[\s-]/g, '')
+            if (regNumbers[regs] === undefined) {
                 registrationCounter++
-                regNumbers[reg] = reg.toUpperCase()
+               
+                regNumbers[regs] = regs.toUpperCase().replace(/(.{2})/, '$1 ')
             } else {
-                regNumbers[reg] = reg.toUpperCase()
+                
+                regNumbers[regs] = regs.toUpperCase().replace(/(.{2})/, '$1 ')
             }
         } else {
             message = "enter only registrations from Paarl, Bellville, Stellenbosch, Malmesbury, Cape-Town, and Kuilsriver"
         }
     }
-
+    
+    
     function getRegNumbers() {
         return regNumbers
     }
@@ -33,14 +41,27 @@ function displayRegNumbers() {
         return registrationCounter
     }
 
+    function setAllTown() {
+        townNumbers = [];
+        for (let regs in regNumbers) {
+            
+            townNumbers.push(regNumbers[regs])
+        }
+    }
 
     function setTown(townPrefix) {
+        trackRegistrations =0
         townChosen = [];
-        for (let reg in regNumbers) {
-            if (regNumbers[reg].startsWith(townPrefix)) {
-                townChosen.push(regNumbers[reg])
+        for (let regs in regNumbers) {
+            trackRegistrations++
+            if (regNumbers[regs].startsWith(townPrefix)) {
+                townChosen.push(regNumbers[regs])
             }
         }
+    }
+
+    function getAllTown() {
+        return townChosen
     }
 
     function getTown() {
@@ -49,13 +70,21 @@ function displayRegNumbers() {
     function getError() {
         return message
     }
+    function trackReg() {
+        return trackRegistrations++
+    }
     return {
         setRegNumber,
         getRegNumbers,
+        setAllTown,
         setTown,
+        getAllTown,
         regNumberCounter,
         getTown,
         getError,
+        trackReg,
     }
 }
+
+
 

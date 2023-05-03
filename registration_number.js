@@ -18,14 +18,14 @@ function displayRegNumbers() {
     function setRegNumber(reg) {
         
         if (allowed.test(reg.toUpperCase())) {
-            
+            trackRegistrations =0
             const regs = reg.replace(/[\s-]/g, '')
             if (regNumbers[regs] === undefined) {
                 registrationCounter++
                
                 regNumbers[regs] = regs.toUpperCase().replace(/(.{2})/, '$1 ')
             } else {
-                
+                trackRegistrations++
                 regNumbers[regs] = regs.toUpperCase().replace(/(.{2})/, '$1 ')
             }
         } else {
@@ -50,10 +50,10 @@ function displayRegNumbers() {
     }
 
     function setTown(townPrefix) {
-        trackRegistrations =0
+        
         townChosen = [];
         for (let regs in regNumbers) {
-            trackRegistrations++
+            
             if (regNumbers[regs].startsWith(townPrefix)) {
                 townChosen.push(regNumbers[regs])
             }

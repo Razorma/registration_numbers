@@ -8,14 +8,8 @@ const numberPlateList = document.querySelector(".numberPlateList");
 const messageInput = document.querySelector(".messageInput");
 
 
-
-
 const enteredTownInput = document.querySelector('input[type="text"]');
 const registrationNumbers = displayRegNumbers()
-
-
-
-
 
 regNumbers = JSON.parse(localStorage.getItem('regNumber')) || {};
 
@@ -23,16 +17,15 @@ regNumbers = JSON.parse(localStorage.getItem('regNumber')) || {};
 addButton.addEventListener("click", function () {
   registrationNumbers.setRegNumber(enteredTown.value)
  
-  console.log(enteredTown.value)
   const letterRegex =/^C[FKLAYJ](\s\d+|\s\d+-\d+)*$/; 
   if (enteredTown.value.toUpperCase() != '') {
     if (!letterRegex.test(enteredTown.value.toUpperCase())) {
       alert("enter only registrations from Paarl, Bellville, Stellenbosch, Malmesbury, Cape-Town, and Kuilsriver")
     }
+ 
     localStorage.setItem('regNumber', JSON.stringify(registrationNumbers.getRegNumbers()));
     registrationNumbers.setTown(selectElement.value)
     enteredTown.value = '';
-    console.log(registrationNumbers.getTown())
      
   } else if (enteredTown.value.toUpperCase() === ''){
     messageInput.innerHTML = "enter registration number"
@@ -62,10 +55,6 @@ addButton.addEventListener("click", function () {
       listItem.textContent = registrationNumbers.getAllTown()[i];
       numberPlateList.appendChild(listItem);
      }
-
-      console.log(registrationNumbers.trackReg())
-    
-    
     }
 })
 clearButton.addEventListener('click', function () {

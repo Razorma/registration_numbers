@@ -14,7 +14,7 @@ let bb = []
 var trackRegistrations = 0;
 function displayRegNumbers() {
     let message = ""
-    const allowed = /^C[FKLAYJ](\s\d+|\s\d+-\d+)*$/;
+    const allowed = /^C[FKLAYJ](\s\d{1,6}|\s\d{1,3}-\d{1,3})*$/;
     function setRegNumber(reg) {
         
         if (allowed.test(reg.toUpperCase())) {

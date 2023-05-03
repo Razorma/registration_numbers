@@ -14,18 +14,42 @@ const registrationNumbers = displayRegNumbers()
 regNumbers = JSON.parse(localStorage.getItem('regNumber')) || {};
 
 
+
+
 addButton.addEventListener("click", function () {
+  
   registrationNumbers.setRegNumber(enteredTown.value)
  
-  const letterRegex =/^C[FKLAYJ](\s\d+|\s\d+-\d+)*$/; 
+ 
+  const letterRegex =/^C[FKLAYJ](\s\d{1,6}|\s\d{3,3}-\d{3,3})*$/; 
   if (enteredTown.value.toUpperCase() != '') {
     if (!letterRegex.test(enteredTown.value.toUpperCase())) {
-      alert("enter only registrations from Paarl, Bellville, Stellenbosch, Malmesbury, Cape-Town, and Kuilsriver")
+      messageInput.innerHTML = "enter only registrations from Paarl, Bellville, Stellenbosch, Malmesbury, Cape-Town, and Kuilsriver"
+      messageInput.classList.add("warning");
+      setTimeout(function () {
+        messageInput.innerHTML = ""
+      }, 2000);
+      //alert()
     }
+    
+    const myListString = localStorage.getItem('myList');
+    const myList = JSON.parse(myListString) || [];
+    const entered = enteredTown.value.toUpperCase().replace(/[\s-]/g, '')
+    if (myList.includes(entered.toUpperCase().replace(/(.{2})/, '$1 '))) {
+      messageInput.innerHTML = "registration already exists"
+      messageInput.classList.add("warning");
+      setTimeout(function () {
+        messageInput.innerHTML = ""
+      }, 2000);
+    }
+  
+   
+    
  
     localStorage.setItem('regNumber', JSON.stringify(registrationNumbers.getRegNumbers()));
     registrationNumbers.setTown(selectElement.value)
     enteredTown.value = '';
+    
      
   } else if (enteredTown.value.toUpperCase() === ''){
     messageInput.innerHTML = "enter registration number"
@@ -33,36 +57,30 @@ addButton.addEventListener("click", function () {
     setTimeout(function () {
       messageInput.innerHTML = ""
     }, 2000);
+
+    
   } 
   
   
   numberPlateList.textContent = "";
-  if (selectElement.value === '') {
-    numberPlateList.textContent = "";
-    const listItem = document.createElement('h4');
-    listItem.textContent = "Please specify town";
-    listItem.classList.add("warning");
-    const referenceListItem = numberPlate.children[0];
-    numberPlate.insertBefore(listItem, referenceListItem);
 
-    setTimeout(function () {
-      listItem.remove();
-    }, 2000);
-  } else {
  for (let i = 0; i < registrationNumbers.getAllTown().length; i++) {
-      
       const listItem = document.createElement('li');
       listItem.textContent = registrationNumbers.getAllTown()[i];
-      numberPlateList.appendChild(listItem);
+      numberPlateList.appendChild(listItem);     
      }
-    }
+     localStorage.setItem('myList', JSON.stringify(registrationNumbers.getAllTown()));    
 })
 clearButton.addEventListener('click', function () {
   localStorage.clear();
   numberPlateList.textContent = "";
   regNumbers = {};
   enteredTown.value = '';
-  alert("you have cleared all the  registration numbers from the storage")
+  messageInput.innerHTML = "You have cleared all the  registration numbers from the storage"
+  messageInput.classList.add("infomation");
+  setTimeout(function () {
+     messageInput.innerHTML = ""
+  }, 2000);
 });
 
 
@@ -70,18 +88,7 @@ clearButton.addEventListener('click', function () {
 
 
 showButton.addEventListener("click", function () {
-  if (selectElement.value === '') {
-    numberPlateList.textContent = "";
-    const listItem = document.createElement('h4');
-    listItem.textContent = "Please specify town";
-    listItem.classList.add("warning");
-    const referenceListItem = numberPlate.children[0];
-    numberPlate.insertBefore(listItem, referenceListItem);
-
-    setTimeout(function () {
-      listItem.remove();
-    }, 2000);
-  } else {
+ 
     
     numberPlateList.innerHTML = "";
     registrationNumbers.setTown(selectElement.value)
@@ -105,7 +112,7 @@ showButton.addEventListener("click", function () {
       numberPlateList.appendChild(listItem);
     }
   }
-  }
+
 })
 
 

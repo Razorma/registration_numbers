@@ -8,6 +8,15 @@ describe('registration number Function tests', function () {
       display.setRegNumber('CA 12558');
       assert.equal(display.regNumberCounter(), 1);
     });
+
+    it('it should return every town if not filltered', function () {
+      let display = displayRegNumbers();
+      display.setRegNumber('CK 12558');
+      display.setRegNumber('CK 12558');
+      display.setRegNumber('CL 12558');
+      display.setTown('');
+      assert.deepEqual(display.getAllTown(), [ 'CA 12558', 'CK 12558', 'CL 12558' ]);
+    });
   
     it('it should return a registration number from Paarl if Paarl is selected', function () {
       let display = displayRegNumbers();
@@ -55,6 +64,7 @@ describe('registration number Function tests', function () {
       display.setTown('CL');
       assert.deepEqual(display.getTown(), ['CL 12558']);
     });
+    
     it('it should return an alert message if the ragistration number entered is not from the Paarl, Bellville, Stellenbosch, Malmesbury, Cape-Town, or Kuilsriver', function () {
       let display = displayRegNumbers();
       display.setRegNumber('CH 12558');

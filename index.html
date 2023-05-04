@@ -1,73 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="registration_number.css">
-</head>
-<body>
+    <link rel="stylesheet" href="registration_number.css" />
+  </head>
+  <body>
     <div class="main">
-      
-        <h1>Ragistration Numbers</h1>
-        <p class="messageInput center"></p>
-        <div class="registrationNumber">
-        
-        
+      <h1>Ragistration Numbers</h1>
+      <p class="messageInput center"></p>
+      <div class="registrationNumber">
         <h2 class="regisrationLabel">Registration number :</h2>
-        
+
         <input
-            type="text"
-            name="Reg"
-            value=""
-            placeholder="  Enter registration number"
-            class="town-area"
-            required
-          />
-       
-        </div>
-        <div class="buttons">
-          <button 
-          class="addButton button" 
-          type="button" 
-          name="button"
-          >Add
-          </button>
-          <button 
-          class="clearButton button" 
-          type="button" 
-          name="button"
-          >Clear
-          </button>
-        </div>
-          <label for="town" class="townSelect"><p>Town:</p>
-            <select id="town" name="town" class="select">
-              <option value="">Select Town</option>
-              <option value="CJ" data-name="paarl">paarl</option>
-              <option value="CY" data-name="Bellville">Bellville</option>
-              <option value="CL" data-name="Stellenbosch">Stellenbosch</option>
-              <option value="CK" data-name="Malmesbury">Malmesbury</option>
-              <option value="CA" data-name="CapeTown">CapeTown</option>
-              <option value="CF" data-name="Kuilsriver">Kuilsriver</option>
-            </select>
+          type="text"
+          name="Reg"
+          value=""
+          placeholder="  Enter registration number"
+          class="town-area"
+          required
+        />
+      </div>
+      <div class="buttons">
+        <button class="addButton button" type="button" name="button">
+          Add
+        </button>
+        <button class="clearButton button" type="button" name="button">
+          Clear
+        </button>
+      </div>
+      <div class="show-section">
+        <label for="town" class="townSelect"
+          ><p>Town:</p>
+          <select id="town" name="town" class="select">
+            <option value="" data-name="All Towns">Select Town</option>
+            <option value="CJ" data-name="paarl">paarl</option>
+            <option value="CY" data-name="Bellville">Bellville</option>
+            <option value="CL" data-name="Stellenbosch">Stellenbosch</option>
+            <option value="CK" data-name="Malmesbury">Malmesbury</option>
+            <option value="CA" data-name="CapeTown">CapeTown</option>
+            <option value="CF" data-name="Kuilsriver">Kuilsriver</option>
+          </select>
         </label>
-        <button 
-          class="showButton button" 
-          type="button" 
-          name="button"
-          >Show
-          </button>
-       
-        <div class="numberPlate">
-          <ul class="numberPlateList">
-          </ul>
-        </div>
-        
-        
+        <button class="showButton button" type="button" name="button">
+          Show
+        </button>
+      </div>
+
+      <div class="numberPlate">
+        <ul class="numberPlateList"></ul>
+      </div>
     </div>
-    
-</body>
-<script src="registration_number.js" charset="utf-8"></script>
-<script src="registration-number.js" charset="utf-8"></script>
+  </body>
+  <script src="registration_number.js" charset="utf-8"></script>
+  <script src="registration-number.js" charset="utf-8"></script>
 </html>

@@ -29,7 +29,7 @@ addButton.addEventListener("click", function () {
       messageInput.classList.add("warning");
       setTimeout(function () {
         messageInput.innerHTML = ""
-      }, 2000);
+      }, 3000);
       //alert()
     }
     
@@ -42,7 +42,7 @@ addButton.addEventListener("click", function () {
       messageInput.classList.add("warning");
       setTimeout(function () {
         messageInput.innerHTML = ""
-      }, 2000);
+      }, 2500);
     }
   
    
@@ -59,7 +59,7 @@ addButton.addEventListener("click", function () {
     messageInput.classList.add("warning");
     setTimeout(function () {
       messageInput.innerHTML = ""
-    }, 2000);
+    }, 2500);
 
     
   } 
@@ -84,7 +84,7 @@ clearButton.addEventListener('click', function () {
   messageInput.classList.add("information");
   setTimeout(function () {
      messageInput.innerHTML = ""
-  }, 2000);
+  }, 2500);
 });
 
 
@@ -109,7 +109,7 @@ showButton.addEventListener("click", function () {
   
       setTimeout(function () {
         listItem.remove();
-      }, 2000);
+      }, 2500);
     }else{
     for (let i = 0; i < registrationNumbers.getTown().length; i++) {
       const listItem = document.createElement('li');

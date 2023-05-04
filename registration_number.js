@@ -1,6 +1,6 @@
 let regNumbers = {}
 let townNumbers = []
-   // Paarl = ('CJ')
+// Paarl = ('CJ')
 // Bellville ('CY')
 // Stellenbosch ('CL')
 // Malmesbury ('CK')
@@ -10,7 +10,6 @@ let townNumbers = []
 let townChosen = []
 var registrationCounter = 0;
 
-let bb = []
 var trackRegistrations = 0;
 function displayRegNumbers() {
     let message = ""

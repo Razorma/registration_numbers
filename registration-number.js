@@ -30,7 +30,7 @@ addButton.addEventListener("click", function () {
       setTimeout(function () {
         messageInput.innerHTML = ""
       }, 3000);
-      //alert()
+     
     }
     
     const myListString = localStorage.getItem('myList');

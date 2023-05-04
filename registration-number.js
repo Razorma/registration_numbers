@@ -25,6 +25,7 @@ addButton.addEventListener("click", function () {
   if (enteredTown.value.toUpperCase() != '') {
     if (!letterRegex.test(enteredTown.value.toUpperCase())) {
       messageInput.innerHTML = "enter only registrations from Paarl, Bellville, Stellenbosch, Malmesbury, Cape-Town, and Kuilsriver"
+      messageInput.classList.remove("information");
       messageInput.classList.add("warning");
       setTimeout(function () {
         messageInput.innerHTML = ""
@@ -37,6 +38,7 @@ addButton.addEventListener("click", function () {
     const entered = enteredTown.value.toUpperCase().replace(/[\s-]/g, '')
     if (myList.includes(entered.toUpperCase().replace(/(.{2})/, '$1 '))) {
       messageInput.innerHTML = "registration already exists"
+      messageInput.classList.remove("information");
       messageInput.classList.add("warning");
       setTimeout(function () {
         messageInput.innerHTML = ""
@@ -53,6 +55,7 @@ addButton.addEventListener("click", function () {
      
   } else if (enteredTown.value.toUpperCase() === ''){
     messageInput.innerHTML = "enter registration number"
+    messageInput.classList.remove("information");
     messageInput.classList.add("warning");
     setTimeout(function () {
       messageInput.innerHTML = ""
@@ -77,7 +80,8 @@ clearButton.addEventListener('click', function () {
   regNumbers = {};
   enteredTown.value = '';
   messageInput.innerHTML = "You have cleared all the  registration numbers from the storage"
-  messageInput.classList.add("infomation");
+  messageInput.classList.remove("warning");
+  messageInput.classList.add("information");
   setTimeout(function () {
      messageInput.innerHTML = ""
   }, 2000);
@@ -99,6 +103,7 @@ showButton.addEventListener("click", function () {
     if(registrationNumbers.getTown() == ''){
       const listItem = document.createElement('h4');
       listItem.textContent = `Please add registration numbers from ${theselectedOption}`;
+      messageInput.classList.remove("information");
       listItem.classList.add("warning");
       numberPlate.appendChild(listItem);
   

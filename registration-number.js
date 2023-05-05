@@ -19,7 +19,7 @@ addButton.addEventListener("click", function () {
   if (enteredTown.value.toUpperCase() != "") {
     if (!letterRegex.test(enteredTown.value.toUpperCase())) {
       messageInput.innerHTML =
-        "enter only registrations from Paarl, Bellville, Stellenbosch, Malmesbury, Cape-Town, and Kuilsriver";
+        "enter only registrations from Paarl, Bellville, Stellenbosch, Malmesbury, Cape-Town, and Kuilsriver (Click on select town to see the formats)";
       messageInput.classList.remove("information");
       messageInput.classList.add("warning");
       setTimeout(function () {

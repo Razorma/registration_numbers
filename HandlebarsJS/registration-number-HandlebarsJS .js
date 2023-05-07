@@ -56,7 +56,8 @@ document.addEventListener('DOMContentLoaded', function () {
       }, 2500);
     }
 
-    plateContainer.textContent = "";
+    plateContainer.innerHTML = "";
+    registrationNumber.setTowns(selectedElement.value);
 
     let reg = registrationNumber.getAllTowns()
     const data = { list: reg };

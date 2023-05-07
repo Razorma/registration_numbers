@@ -54,8 +54,8 @@ addButton.addEventListener("click", function () {
     }, 2500);
   }
 
-  numberPlateList.textContent = "";
-
+  numberPlateList.innerHTML = "";
+  registrationNumbers.setTown(selectElement.value);
   for (let i = 0; i < registrationNumbers.getAllTown().length; i++) {
     const listItem = document.createElement("li");
     listItem.textContent = registrationNumbers.getAllTown()[i];

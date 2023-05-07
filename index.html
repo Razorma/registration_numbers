@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="registration_number.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
   </head>
   <body>
     <div class="main">
@@ -53,7 +54,59 @@
         <ul class="numberPlateList"></ul>
       </div>
     </div>
+    <div class="main">
+      <h1>Ragistration Numbers</h1>
+      <p class="warningMessage center"></p>
+      <div class="registrationNumber">
+        <h2 class="regisrationLabel">Registration number :</h2>
+
+        <input
+          type="text"
+          name="Reg"
+          value=""
+          placeholder="  Enter registration number"
+          class="town-areas"
+          required
+        />
+      </div>
+      <div class="buttons">
+        <button class="addButtonTwo button" type="button" name="button">
+          Add
+        </button>
+        <button class="clearButtonTwo button" type="button" name="button">
+          Clear
+        </button>
+      </div>
+      <div class="show-section">
+        <label for="town" class="townSelect"
+          ><p>Town:</p>
+          <select id="town" name="town" class="Select">
+            <option value="" data-name="All Towns">Select Town</option>
+            <option value="CJ" data-name="paarl">paarl (CJ 122122)</option>
+            <option value="CY" data-name="Bellville">Bellville (CY 122122)</option>
+            <option value="CL" data-name="Stellenbosch">Stellenbosch (CL 122122)</option>
+            <option value="CK" data-name="Malmesbury">Malmesbury (CK 122122)</option>
+            <option value="CA" data-name="CapeTown">CapeTown (CA 122122)</option>
+            <option value="CF" data-name="Kuilsriver">Kuilsriver (CF 122122)</option>
+          </select>
+        </label>
+        <button class="showButtonTwo button" id="show" type="button" name="button">
+          Show
+        </button>
+      </div>
+
+      <div class="numberPlates">
+         <ul  id="plate-container"></ul>   <!--class="numberPlateList" -->
+      </div>
+    </div>
+    <script type="text/x-template" class="userTemplate">
+      {{#each list}}
+      <li>{{this}}</li>
+      {{/each}}
+  </script>
   </body>
   <script src="registration_number.js" charset="utf-8"></script>
   <script src="registration-number.js" charset="utf-8"></script>
+  <script src="HandlebarsJS/registration-number-HandlebarsJS .js" charset="utf-8"></script>
+  <script src="HandlebarsJS/registration.number.HandlebarsJS.js" charset="utf-8"></script>
 </html>

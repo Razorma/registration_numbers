@@ -12,6 +12,15 @@ const registrationNumbers = displayRegNumbers();
 
 regNumbers = JSON.parse(localStorage.getItem("regNumber")) || {};
 
+const displayListString = localStorage.getItem("displayList");
+const displayList = JSON.parse(displayListString) || [];
+
+for (let i = 0; i < displayList.length; i++) {
+  const listItem = document.createElement("li");
+  listItem.textContent = displayList[i];
+  numberPlateList.appendChild(listItem);
+}
+
 addButton.addEventListener("click", function () {
   registrationNumbers.setRegNumber(enteredTown.value);
 
@@ -65,9 +74,16 @@ addButton.addEventListener("click", function () {
     "myList",
     JSON.stringify(registrationNumbers.getAllTown())
   );
+  localStorage.setItem(
+    "displayList",
+    JSON.stringify(registrationNumbers.getTown())
+  );
+
 });
 clearButton.addEventListener("click", function () {
-  localStorage.clear();
+  localStorage.removeItem("myList")
+  localStorage.removeItem("regNumber")
+  localStorage.removeItem("displayList")
   numberPlateList.textContent = "";
   regNumbers = {};
   enteredTown.value = "";

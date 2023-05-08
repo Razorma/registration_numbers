@@ -13,6 +13,18 @@ document.addEventListener('DOMContentLoaded', function () {
   const registrationNumber = displayRegNumber();
 
   regNumber = JSON.parse(localStorage.getItem("regNumbers")) || {};
+  
+  const myDisplayListString = localStorage.getItem("myDisplayLists");
+  const myDisplayLists = JSON.parse(myDisplayListString) || [];
+  let myListData = myDisplayLists
+  const data = { list: myListData };
+
+  var templateSource = document.querySelector(".userTemplate").innerHTML;
+  var template = Handlebars.compile(templateSource);
+  const theList = template(data);
+
+  const listContainer = document.getElementById("plate-container");
+  listContainer.innerHTML = theList;
 
   addButtonTwo.addEventListener("click", function () {
 
@@ -59,6 +71,11 @@ document.addEventListener('DOMContentLoaded', function () {
     plateContainer.innerHTML = "";
     registrationNumber.setTowns(selectedElement.value);
 
+    localStorage.setItem(
+      "myDisplayLists",
+      JSON.stringify(registrationNumber.getTowns())
+    );
+
     let reg = registrationNumber.getAllTowns()
     const data = { list: reg };
 
@@ -101,10 +118,14 @@ document.addEventListener('DOMContentLoaded', function () {
     listContainer.innerHTML = theList;
       }
       selectedElement.value ="";
+      
     });
 
     clearButtonTwo.addEventListener("click", function () {
-      localStorage.clear();
+      localStorage.removeItem("myLists")
+      localStorage.removeItem("regNumbers")
+      localStorage.removeItem("myDisplayLists")
+     
       plateContainer.innerHTML = "";
       regNumber = {};
       enteredTowns.value = "";

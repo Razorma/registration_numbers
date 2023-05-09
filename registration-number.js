@@ -11,7 +11,7 @@ const enteredTownInput = document.querySelector('input[type="text"]');
 const registrationNumbers = displayRegNumbers();
 
 regNumbers = JSON.parse(localStorage.getItem("regNumber")) || {};
-
+registrationNumbers.setTown(selectElement.value);
 const displayListString = localStorage.getItem("displayList");
 const displayList = JSON.parse(displayListString) || [];
 
